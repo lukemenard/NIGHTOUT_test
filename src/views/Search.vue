@@ -20,14 +20,14 @@
                     <a href="" class>
                         Add a New City
                     </a> 
-                    <div v-for="city in filteredCities">
+                    <div v-for="city in filteredCities" :key="city.id">
                         <!--a v-bind:href="city.uri" target="_blank"-->
-                        <a href="" class>
+                        <router-link :to="{name: 'city', params: {id: city.id}}">
                             {{city.name}}
                             <span class="link-sub-text">
                                 {{city.state_name}}
                             </span>
-                        </a>    
+                        </router-link >   
                     </div>
                 </div>
             </div>
@@ -37,15 +37,13 @@
 
 
 <script>
-    import CityList from '@/components/cities/CityList'
-    import Search from '@/views/Search'
+    // import Search from '@/views/Search'
 
     export default {
-        name: "Cities Search",
-        components: {
-            Search,
-            CityList
-        },
+        name: "Cities-Search",
+        // components: {
+        //     Search,
+        // },
         data() {
             return {
                 searchQuery:'',

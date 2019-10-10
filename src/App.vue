@@ -158,11 +158,6 @@
     }
 
   .hero {
-    // position: relative;
-    // min-height: 60px;
-    // height: 100%;
-    // max-width: 1440px;
-    // display: block;
     z-index: 1;
   }
 

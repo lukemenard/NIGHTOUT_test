@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 const getCitiesUrl = "https://nightout.com/api/cities"
 const getPopularCitiesUrl = "https://nightout.com/api/cities?scope=popular"
+const showCityUrl = "https://nightout.com/api/cities/"
 const getConfig = {
   method: "GET",
   headers: {
@@ -22,7 +23,7 @@ export default new Vuex.Store({
     city: state => id => {
       return state.cities.find(city => city.id == id)
     }
-  }
+  },
   mutations: {
     setCities(state, cities){
       state.cities = cities
@@ -48,6 +49,17 @@ export default new Vuex.Store({
       .then(results => {
         commit("setPopularCities", results)
       })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
+    showCities({ commit }, id){
+      fetch(`showCityUrl + ${id}`, getConfig)
+      .then(response => response.json())
+      .then(results => console.log(results))
+      // .then(results => {
+      //   commit("setPopularCities", results)
+      // })
       .catch((error) => {
         console.log(error)
       })
