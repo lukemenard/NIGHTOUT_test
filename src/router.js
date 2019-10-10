@@ -16,11 +16,11 @@ export default new Router({
       name: 'index',
       component: Admin,
       children: [{
-        path: '/search',
+        path: '/cities',
         name: 'search',
         component: Search,
       },{
-        path: '/city',
+        path: '/:slug',
         name: 'city',
         component: Cities,
       }]

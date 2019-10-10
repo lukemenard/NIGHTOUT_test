@@ -21,8 +21,7 @@
                         Add a New City
                     </a> 
                     <div v-for="city in filteredCities" :key="city.id">
-                        <!--a v-bind:href="city.uri" target="_blank"-->
-                        <router-link :to="{name: 'city', params: {id: city.id}}">
+                        <router-link :to="{name: 'city', params: {id: city.id, slug: city.slug}}">
                             {{city.name}}
                             <span class="link-sub-text">
                                 {{city.state_name}}
@@ -37,13 +36,9 @@
 
 
 <script>
-    // import Search from '@/views/Search'
 
     export default {
         name: "Cities-Search",
-        // components: {
-        //     Search,
-        // },
         data() {
             return {
                 searchQuery:'',
