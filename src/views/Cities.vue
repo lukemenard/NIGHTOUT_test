@@ -1,13 +1,24 @@
 <template>
     <div class="city" >
-        <h2>{{city.name}}</h2>
+        <div class="event-list">
+            <h1>Events in {{city.name}}</h1>
+            <EventList :events="events" :eventCollections="eventCollections" />
+            <router-view/>
+        </div>
     </div>
 </template>
 
 <script>
+import EventList from '@/components/EventList'
+
 export default {
+    components: {
+        EventList
+    },
     mounted() {
         this.$store.dispatch("showCity", this.cityId)
+        this.$store.dispatch("getCityEvents", this.cityId)
+        this.$store.dispatch("getCityEventCollections", this.cityId)
     },
     computed: {
         cityId() {
@@ -15,8 +26,56 @@ export default {
         },
         city() {
             return this.$store.getters.city(this.cityId)
+        },
+        events() {
+            return this.$store.state.cityEvents
+        },
+        eventCollections(){
+            return this.$store.state.cityEventCollections
         }
     }
 }
-
 </script>
+
+<style>
+.event-list {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 0px 60px 0 20px;
+    /* max-width: 1080px; */
+    margin-top: 0;
+    margin-right: 0;
+    /* margin-bottom: 50px; */
+    margin-left: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.city h1{
+    top: 110px;
+    font-family: "Montserrat", arial, sans-serif;
+    color: white;
+    display: inline-block;
+    margin-top: 40px;
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 6px 12px 7px;
+    border-radius: 25px;
+    background: rgba(162,160,168,.24);
+    box-shadow: inset 0 1px 0 rgba(72,72,72,.52);
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #5477f5;
+}
+
+.city {
+    position: absolute;
+    top: 64px;
+    width: 100%;
+    height: 100%;
+}
+
+</style>

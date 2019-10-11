@@ -2,7 +2,7 @@
     <div class="search-wrapper">
         <div class="city-search">
             <div class="search-close">
-                <router-link :to="{name: 'admin'}">
+                <router-link :to="{name: 'index'}">
                     X
                 </router-link>
             </div>
@@ -39,6 +39,9 @@
 
     export default {
         name: "Cities-Search",
+        props: {
+            city: Object,
+        },
         data() {
             return {
                 searchQuery:'',

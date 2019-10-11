@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const getCitiesUrl = "https://nightout.com/api/cities"
 const getPopularCitiesUrl = "https://nightout.com/api/cities?scope=popular"
-const showCityUrl = "https://nightout.com/api/cities/"
+
 const getConfig = {
   method: "GET",
   headers: {
@@ -17,11 +17,17 @@ const getConfig = {
 export default new Vuex.Store({
   state: {
     cities: [],
-    popularCities: []
+    popularCities: [],
+    selectedCity: {},
+    cityEvents: [],
+    cityEventCollections: []
   },
   getters: {
     city: state => id => {
       return state.cities.find(city => city.id == id)
+    },
+    event: state => id => {
+      return state.cityEvents.find(event => event.id == id)
     }
   },
   mutations: {
@@ -30,6 +36,19 @@ export default new Vuex.Store({
     },
     setPopularCities(state, popularCities){
       state.popularCities = popularCities
+    },
+    setSelectedCity(state, selectedCity){
+      state.selectedCity = selectedCity
+    },
+    setCityEvents(state, cityEvents){
+      state.cityEvents = cityEvents
+    },
+    setCityEventCollections(state, cityEventCollections){
+      state.cityEventCollections = cityEventCollections
+    },
+    timestampToDate({ commit }, id){
+      const event = state.cityEvents.find(event => event.id == id)
+      event.start_time.toDateString()
     }
   },
   actions: {
@@ -53,16 +72,35 @@ export default new Vuex.Store({
         console.log(error)
       })
     },
-    showCities({ commit }, id){
-      fetch(`showCityUrl + ${id}`, getConfig)
+    showCity({ commit }, id){
+      fetch(`https://nightout.com/api/cities/${id}`, getConfig)
       .then(response => response.json())
-      .then(results => console.log(results))
-      // .then(results => {
-      //   commit("setPopularCities", results)
-      // })
+      // .then(results => console.log(results))
+      .then(results => {
+        commit("setSelectedCity", results)
+      })
       .catch((error) => {
         console.log(error)
       })
+    },
+    getCityEvents({ commit }, id){
+      fetch(`https://nightout.com/api/events?city_ids=${id}&limit=25`, getConfig)
+      .then(response => response.json())
+      // .then(results => console.log(results))
+      .then(results => {
+        commit("setCityEvents", results)
+      })
+    },
+    getCityEventCollections({ commit }, id){
+      fetch(`https://nightout.com/api/collections?city_ids=${id}`, getConfig)
+      .then(response => response.json())
+      // .then(results => console.log(results))
+      .then(results => {
+        commit("setCityEventCollections", results)
+      })
+    },
+    timestampToDate({ commit }, id){
+      commit("timestampToDate", id)
     }
   }
 })

@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Admin from '@/views/Admin.vue'
 import Search from '@/views/Search.vue'
 import Cities from '@/views/Cities.vue'
+import Event from '@/views/Event.vue'
+import Collection from '@/views/Collection.vue'
 
 Vue.use(Router)
 
@@ -23,6 +25,14 @@ export default new Router({
         path: '/:slug',
         name: 'city',
         component: Cities,
+      },{
+        path: '/events/:id',
+        name: 'event',
+        component: Event,
+      },{
+        path: '/collections/:id',
+        name: 'collection',
+        component: Collection,
       }]
     }
   ]
