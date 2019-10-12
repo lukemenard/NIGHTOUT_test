@@ -28,7 +28,6 @@
 export default {
     props: {
         event: Object,
-        // imageURL: String
     },
     computed: {
         eventId(){

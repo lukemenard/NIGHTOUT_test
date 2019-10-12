@@ -164,20 +164,15 @@
 
   .hero-image {
     background-image: url(https://nightout.s3.amazonaws.com/media/features/10029/small-072cd1424d62d9c3.jpeg?1570117000);
-    // position: absolute;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 2000px;
-    // width: 100%;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    // display: block;
-    // object-fit: cover;
-    // object-position: center;
   }
 
 </style>

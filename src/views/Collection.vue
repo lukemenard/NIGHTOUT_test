@@ -30,9 +30,6 @@ export default {
     components: {
         EventListing
     },
-    // props: {
-    //     eventCollection: Object
-    // },
     computed: {
         eventCollection(){
             return this.$store.getters.eventCollection(this.eventCollectionId)
@@ -104,10 +101,6 @@ export default {
         height: 1000px;
         padding-left: 7.5%;
         padding-right: 7.5%;
-    }
-
-    .listing-wrapper {
-        /* padding: 50px; */
     }
 
 </style>

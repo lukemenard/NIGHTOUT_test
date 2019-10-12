@@ -63,14 +63,7 @@ export default new Vuex.Store({
     setSelectedEventCollection(state, selectedEventCollection){
       state.selectedEventCollection = selectedEventCollection
     },
-    timestampToDate({ commit }, id){
-      const event = state.cityEvents.find(event => event.id == id)
-      event.start_time.toDateString()
-    },
-    // updateCityHeader(state, id){
-    //   const city = state.cities.find(city => city.id == id)
-    //   city = city.name
-    // }
+
   },
   actions: {
     getCities({ commit }){
@@ -142,11 +135,8 @@ export default new Vuex.Store({
         console.log(error)
       })
     },
-    timestampToDate({ commit }, id){
-      commit("timestampToDate", id)
-    },
-    // updateCityHeader(name){
-    //   const cityName = name
-    // }
   }
+    // timestampToDate({ commit }, id){
+    //   commit("timestampToDate", id)
+    // },
 })

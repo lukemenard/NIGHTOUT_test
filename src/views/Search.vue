@@ -17,9 +17,9 @@
                     />
                 </div>
                 <div class="search-cities">
-                    <a href="" class>
+                    <router-link :to="{name: 'new-city'}">
                         Add a New City
-                    </a> 
+                    </router-link> 
                     <div v-for="city in filteredCities" :key="city.id">
                         <router-link :to="{name: 'city', params: {id: city.id, slug: city.slug}}">
                             {{city.name}}

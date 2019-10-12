@@ -46,10 +46,8 @@ export default {
     position: relative;
     width: 100%;
     padding: 0px 60px 0 20px;
-    /* max-width: 1080px; */
     margin-top: 0;
     margin-right: 0;
-    /* margin-bottom: 50px; */
     margin-left: 0;
     box-sizing: border-box;
     background-color: black;
