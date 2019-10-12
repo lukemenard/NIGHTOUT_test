@@ -72,9 +72,9 @@ export default new Vuex.Store({
       .then(results => {
         commit("setCities", results)
       })
-      .catch((error) => {
-        // console.log(error)
-      })
+      // .catch((error) => {
+      //   console.log(error)
+      // })
     },
     getPopularCities({ commit }){
       fetch(getPopularCitiesUrl, getConfig)
@@ -82,9 +82,9 @@ export default new Vuex.Store({
       .then(results => {
         commit("setPopularCities", results)
       })
-      .catch((error) => {
-        // console.log(error)
-      })
+      // .catch((error) => {
+      //   console.log(error)
+      // })
     },
     showCity({ commit }, id){
       fetch(`https://nightout.com/api/cities/${id}`, getConfig)
@@ -93,9 +93,9 @@ export default new Vuex.Store({
       .then(results => {
         commit("setSelectedCity", results)
       })
-      .catch((error) => {
-        // console.log(error)
-      })
+      // .catch((error) => {
+      //   console.log(error)
+      // })
     },
     getCityEvents({ commit }, id){
       fetch(`https://nightout.com/api/events?city_ids=${id}&limit=25`, getConfig)
@@ -120,9 +120,9 @@ export default new Vuex.Store({
       .then(results => {
         commit("setSelectedEvent", results)
       })
-      .catch((error) => {
-        // console.log(error)
-      })
+      // .catch((error) => {
+      //   console.log(error)
+      // })
     },
     showEventCollection({ commit }, id){
       fetch(`https://nightout.com/api/collections/${id}`, getConfig)
@@ -131,9 +131,9 @@ export default new Vuex.Store({
       .then(results => {
         commit("setSelectedEventCollection", results)
       })
-      .catch((error) => {
-        // console.log(error)
-      })
+      // .catch((error) => {
+      //   console.log(error)
+      // })
     },
   }
     // timestampToDate({ commit }, id){

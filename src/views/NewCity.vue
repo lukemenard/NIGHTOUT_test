@@ -74,9 +74,9 @@ export default {
             // .then(results => {
             //     commit("setCities", results)
             // })
-            .catch((error) => {
-                // console.log(error)
-            })
+            // .catch((error) => {
+            //     console.log(error)
+            // })
         }
     }
 }  
