@@ -69,16 +69,14 @@ export default {
                 })
             }
             const results = fetch(`https://nightout.com/api/cities`, addConfig)
-            .then(response => console.log(response))
             .then(results => JSON.parse(results))
             // .then(results => console.log(results))
             // .then(results => {
             //     commit("setCities", results)
             // })
             .catch((error) => {
-                console.log(error)
+                // console.log(error)
             })
-            console.log(results.name)
         }
     }
 }  

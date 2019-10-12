@@ -73,7 +73,7 @@ export default new Vuex.Store({
         commit("setCities", results)
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
       })
     },
     getPopularCities({ commit }){
@@ -83,7 +83,7 @@ export default new Vuex.Store({
         commit("setPopularCities", results)
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
       })
     },
     showCity({ commit }, id){
@@ -94,7 +94,7 @@ export default new Vuex.Store({
         commit("setSelectedCity", results)
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
       })
     },
     getCityEvents({ commit }, id){
@@ -121,7 +121,7 @@ export default new Vuex.Store({
         commit("setSelectedEvent", results)
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
       })
     },
     showEventCollection({ commit }, id){
@@ -132,7 +132,7 @@ export default new Vuex.Store({
         commit("setSelectedEventCollection", results)
       })
       .catch((error) => {
-        console.log(error)
+        // console.log(error)
       })
     },
   }
