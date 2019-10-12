@@ -1,29 +1,36 @@
 <template>
-    <div class="collection-wrapper">
-        <div class="collection-title">
-            <h2>{{eventCollection.title}}</h2>
-        </div>
-        <div class="collection-description-and-tag">
-            <div class="collection-description">
-                {{eventCollection.description}}
+    <router-link :to="{name: 'collection'}">
+        <div class="collection-wrapper">
+            <div class="collection-title">
+                <h2>{{eventCollection.title}}</h2>
             </div>
-            <router-link :to="{name: 'collection', params: {id: eventCollection.id}}" class="collection-tag">
-                CURATED COLLECTION >
-            </router-link>
-            <div class="hero-layout">
-                <router-link :to="{name: 'collection', params: {id: eventCollection.id}}">
-                    <img :src=eventCollection.image_src class="hero-layout-image"/>
-                    <span class="view-collection">View Collection</span>
+                <div class="collection-description-and-tag">
+                    <div class="collection-description">
+                        {{eventCollection.description}}
+                    </div>
+                <router-link :to="{name: 'collection', params: {id: eventCollection.id, cityId: cityId}}" class="collection-tag">
+                    CURATED COLLECTION >
                 </router-link>
+                <div class="hero-layout">
+                    <router-link :to="{name: 'collection', params: {id: eventCollection.id, cityId: cityId}}">
+                        <img :src=eventCollection.image_src class="hero-layout-image"/>
+                        <span class="view-collection">View Collection</span>
+                    </router-link>
+                </div>
             </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
 export default {
     props: {
         eventCollection: Object
+    },
+    computed: {
+        cityId() {
+            return this.$route.params.id
+        }
     }
 }
 </script>

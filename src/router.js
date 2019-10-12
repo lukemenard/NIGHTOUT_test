@@ -21,19 +21,22 @@ export default new Router({
         path: '/cities',
         name: 'search',
         component: Search,
-      },{
-        path: '/:slug',
-        name: 'city',
-        component: Cities,
-      },{
-        path: '/events/:id',
-        name: 'event',
-        component: Event,
-      },{
-        path: '/collections/:id',
-        name: 'collection',
-        component: Collection,
       }]
+    },
+    {
+      path: '/:slug',
+      name: 'city',
+      component: Cities,
+    },
+    {
+      path: '/events/:id',
+      name: 'event',
+      component: Event,
+    },
+    {
+      path: '/collections/:id',
+      name: 'collection',
+      component: Collection,
     }
   ]
-})
+  })

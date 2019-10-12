@@ -1,9 +1,9 @@
 <template>
     <div class="event-list">
         <div class="event-collection">
-            <!-- <span v-for="eventCollection in eventCollections" :key="eventCollection.id"> -->
-                <EventCollection :eventCollection="eventCollections[0]" />
-            <!-- </span> -->
+            <span v-for="eventCollection in eventCollections" :key="eventCollection.id">
+                <EventCollection :eventCollection="eventCollection" :key="eventCollection.id" :cityId="eventCollection.city_ids[0]" />
+            </span>
         </div>
         <div class="event-list-title">
             Upcoming

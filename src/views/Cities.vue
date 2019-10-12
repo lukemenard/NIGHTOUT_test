@@ -32,8 +32,11 @@ export default {
         },
         eventCollections(){
             return this.$store.state.cityEventCollections
-        }
-    }
+        },
+        updateCityHeader() {
+            return this.$route.params.updateCityHeader
+        }        
+    },
 }
 </script>
 

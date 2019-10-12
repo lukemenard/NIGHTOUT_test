@@ -4,7 +4,7 @@
             <div class="meta-content">
                 <div class="poster-wrapper">
                     <router-link :to="{name: 'event', params: {id: event.id, event: event, imageURL: imageURL}}" class="poster-link">
-                        <img :src=event.poster_url.small class="poster"/>
+                        <img :src="imageURL" class="poster"/>
                     </router-link>
                 </div>
                 <div class="title-and-description">
@@ -32,12 +32,11 @@ export default {
     },
     computed: {
         eventId(){
-            return this.$route.params.id
+            return this.$attrs.collectionEventId ? this.$attrs.collectionEventId : this.$route.params.id
         },
         imageURL(){
-            return this.event.cover_url ? this.event.cover_url : this.event.poster_url.large
-        }
-    
+            return this.event.image_src ? this.event.image_src : this.event.poster_url.small
+        },  
         // event(){
         //     return this.$store.getters.event(this.eventId)
         // }

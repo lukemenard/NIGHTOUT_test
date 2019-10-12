@@ -3,6 +3,12 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+// const express = require('express')
+// const redis = require('redis')
+// const app = express()
+// const client = redis.createClient(6379)
+
+
 const getCitiesUrl = "https://nightout.com/api/cities"
 const getPopularCitiesUrl = "https://nightout.com/api/cities?scope=popular"
 
@@ -20,7 +26,9 @@ export default new Vuex.Store({
     popularCities: [],
     selectedCity: {},
     cityEvents: [],
-    cityEventCollections: []
+    selectedEvent: {},
+    cityEventCollections: [],
+    selectedEventCollection: {},
   },
   getters: {
     city: state => id => {
@@ -28,6 +36,9 @@ export default new Vuex.Store({
     },
     event: state => id => {
       return state.cityEvents.find(event => event.id == id)
+    },
+    eventCollection: state => id => {
+      return state.cityEventCollections.find(collection => collection.id == id)
     }
   },
   mutations: {
@@ -46,10 +57,20 @@ export default new Vuex.Store({
     setCityEventCollections(state, cityEventCollections){
       state.cityEventCollections = cityEventCollections
     },
+    setSelectedEvent(state, selectedEvent){
+      state.selectedEvent = selectedEvent
+    },
+    setSelectedEventCollection(state, selectedEventCollection){
+      state.selectedEventCollection = selectedEventCollection
+    },
     timestampToDate({ commit }, id){
       const event = state.cityEvents.find(event => event.id == id)
       event.start_time.toDateString()
-    }
+    },
+    // updateCityHeader(state, id){
+    //   const city = state.cities.find(city => city.id == id)
+    //   city = city.name
+    // }
   },
   actions: {
     getCities({ commit }){
@@ -99,8 +120,33 @@ export default new Vuex.Store({
         commit("setCityEventCollections", results)
       })
     },
+    showEvent({ commit }, id){
+      fetch(`https://nightout.com/api/events/${id}?details=full`, getConfig)
+      .then(response => response.json())
+      // .then(results => console.log(results))
+      .then(results => {
+        commit("setSelectedEvent", results)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
+    showEventCollection({ commit }, id){
+      fetch(`https://nightout.com/api/collections/${id}`, getConfig)
+      .then(response => response.json())
+      // .then(results => console.log(results))
+      .then(results => {
+        commit("setSelectedEventCollection", results)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
     timestampToDate({ commit }, id){
       commit("timestampToDate", id)
-    }
+    },
+    // updateCityHeader(name){
+    //   const cityName = name
+    // }
   }
 })

@@ -41,6 +41,7 @@
         name: "Cities-Search",
         props: {
             city: Object,
+            // cityName: String
         },
         data() {
             return {
@@ -51,7 +52,6 @@
             this.$store.dispatch("getCities")
             this.$store.dispatch("getPopularCities")
         },
-
         computed: {
             cities() {
                 return this.$store.state.cities
@@ -59,7 +59,7 @@
             popularCities() {
                 return this.$store.state.popularCities
             },
-            filteredCities (){
+            filteredCities() {
                 if(this.searchQuery){
                     return this.cities.filter((city)=>{
                         return city.name.startsWith(this.searchQuery);
@@ -67,7 +67,7 @@
                 }else{
                     return this.popularCities;
                 }
-            }
+            },
         }
     }
 </script>

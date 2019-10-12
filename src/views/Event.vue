@@ -10,7 +10,7 @@
                     <div class="event-title-and-tickets">
                         <div class="poster-wrapper">
                             <div class="event-poster">
-                                <img v-bind:src="event.images.poster">
+                                <img v-bind:src="posterImage">
                             </div>
                         </div>
                         <div class="event-details-wrapper">
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="event-details">
                                     <div class="organization">
-                                        <h3>{{event.organization.name}}</h3>
+                                        <h3>{{organization}}</h3>
                                     </div>
                                     <div class="teaser">
                                         <p>{{event.teaser}}</p>
@@ -37,33 +37,34 @@
 
 <script>
 export default {
-    props: {
-        event: Object
-    },
-    data: function (){
-        return {
-            imageURL: this.$route.params.imageURL
-        }
+    mounted(){
+        this.$store.dispatch("showEvent", this.eventId)
     },
     computed: {
         event(){
             return this.$route.params.event
+        },
+        eventId(){
+            return this.$route.params.event.id
+        },
+        imageURL(){
+            return this.event.image_src ? this.event.image_src : this.event.poster_url.small
+        }, 
+        posterImage(){
+            return this.event.image_src ? this.event.image_src : this.event.images.poster
+        },
+        organization(){
+            return this.event.organization_name ? this.event.organization_name : this.event.organization.name
         }
     }
 }
-    // data: function (){
-    //     return {
-    //         event: this.$route.params.event
-    //     }
-    // }
-    
 </script>
 
 
 
 <style scoped>
     .wrapper {
-        background-color: #fff;
+        background-color: black;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
@@ -87,7 +88,7 @@ export default {
         background-color: #222;
         /* padding: 130px 20px 80px; */
         display: block;
-        position: absolute;
+        position: fixed;
         top: 60px;
         width: 100%;
         height: 700px;

@@ -29,6 +29,7 @@
   </div>
 </template>
 
+
 <style lang="scss">
   body, html{
     height: 100%;
