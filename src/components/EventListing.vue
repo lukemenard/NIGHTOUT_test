@@ -3,13 +3,13 @@
         <div class="event">
             <div class="meta-content">
                 <div class="poster-wrapper">
-                    <router-link :to="{name: 'event', params: {id: event.id, event: event, imageURL: imageURL}}" class="poster-link">
+                    <router-link :cityId="cityId" :EventId="event.id" :to="{name: 'event', params: {EventId: event.id, event: event, imageURL: imageURL, slug: slug, cityId: cityId}}" class="poster-link">
                         <img :src="imageURL" class="poster"/>
                     </router-link>
                 </div>
                 <div class="title-and-description">
                     <div class="event-title">
-                        <router-link :to="{name: 'event', params: {id: event.id, event: event, imageURL: imageURL}}" class="title-link">
+                        <router-link :cityId="cityId" :EventId="event.id" :to="{name: 'event', params: {EventId: event.id, event: event, imageURL: imageURL, slug: slug, cityId: cityId}}" class="title-link">
                             <h5 class="title">{{event.title}}</h5>
                         </router-link>
                     </div>
@@ -28,6 +28,9 @@
 export default {
     props: {
         event: Object,
+        id: Number,
+        slug: String,
+        cityId: Number
     },
     computed: {
         eventId(){

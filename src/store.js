@@ -3,10 +3,29 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-// const express = require('express')
+// const { setup, RedisStore } = require('axios-cache-adapter')
 // const redis = require('redis')
+
+// const express = require('express')
 // const app = express()
-// const client = redis.createClient(6379)
+
+// let connectionString = process.env.COMPOSE_REDIS_URL
+// if (connectionString === undefined) {
+//   console.error("Please set the COMPOSE_REDIS_URL environment variable")
+//   process.exit(1)
+// }
+
+// let client = null
+
+// if (connectionString.startsWith("rediss:")){
+//   client = redis.createClient(connectionString, {
+//     tls: {servername: new URL(connectionString).hostname}
+//   })
+// } else {
+//   client = redis.createClient(connectionString)
+// }
+
+// // const client = redis.createClient(6379)
 
 
 const getCitiesUrl = "https://nightout.com/api/cities"

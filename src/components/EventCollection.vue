@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'collection'}">
+    <router-link :to="{name: 'collection', params: {CollectionId: eventCollection.id, cityId: cityId, slug: slug}}">
         <div class="collection-wrapper">
             <div class="collection-title">
                 <h2>{{eventCollection.title}}</h2>
@@ -8,11 +8,11 @@
                     <div class="collection-description">
                         {{eventCollection.description}}
                     </div>
-                <router-link :to="{name: 'collection', params: {id: eventCollection.id, cityId: cityId}}" class="collection-tag">
+                <router-link :cityId="cityId" :to="{name: 'collection', params: {CollectionId: eventCollection.id, cityId: cityId, slug: slug}}" class="collection-tag">
                     CURATED COLLECTION >
                 </router-link>
                 <div class="hero-layout">
-                    <router-link :to="{name: 'collection', params: {id: eventCollection.id, cityId: cityId}}">
+                    <router-link :cityId="cityId" :to="{name: 'collection', params: {CollectionId: eventCollection.id, cityId: cityId, slug: slug}}">
                         <img :src=eventCollection.image_src class="hero-layout-image"/>
                         <span class="view-collection">View Collection</span>
                     </router-link>
@@ -25,12 +25,15 @@
 <script>
 export default {
     props: {
-        eventCollection: Object
+        eventCollection: Object,
+        slug: String,
+        CollectionId: Number,
+        cityId: Number
     },
     computed: {
-        cityId() {
-            return this.$route.params.id
-        }
+        // cityId() {
+        //     return this.$route.params.id
+        // }
     }
 }
 </script>

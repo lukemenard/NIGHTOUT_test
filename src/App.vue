@@ -12,7 +12,7 @@
         </div>
         <div class="header-city-select">
           <a href="" class="header-select">
-            <router-link :to="{name: 'search'}">
+            <router-link v-bind:to="{name: 'search'}">
               Search Cities
             </router-link>
           </a>

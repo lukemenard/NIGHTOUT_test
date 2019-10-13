@@ -2,17 +2,20 @@
     <div class="event-list">
         <div class="event-collection">
             <span v-for="eventCollection in eventCollections" :key="eventCollection.id">
-                <EventCollection :eventCollection="eventCollection" :key="eventCollection.id" :cityId="eventCollection.city_ids[0]" />
+                <EventCollection :eventCollection="eventCollection" :CollectionId="eventCollections[0].id" :cityId="cityId" :slug="slug" />
             </span>
+            <!-- <router-view /> -->
         </div>
         <div class="event-list-title">
             Upcoming
         </div>
         <div class="event-listing">
             <span v-for="event in events" :key="event.id" class="listing-span">
-                <EventListing :event="event" />
+                <EventListing :event="event" :EventId="event.id" :slug="slug" :cityId="cityId"/>
             </span>
+            <!-- <router-view /> -->
         </div>
+        <router-view/>
     </div>
 </template>
 
@@ -28,7 +31,19 @@ export default {
     props: {
         events: Array,
         eventCollections: Array,
+        slug: String,
+        // CollectionId: Number,
+        EventId: Number,
+        // cityId: Number
     },
+    computed: {
+        cityId(){
+            return this.$store.state.selectedCity.id
+        },
+        CollectionId() {
+            return this.$store.state.selectedEventCollection.id
+        },
+    }
 }
 </script>
 
@@ -47,6 +62,7 @@ export default {
     background-color: black;
     height: 100%;
     width: 100%;
+    position: absolute;
 }
 
 .event-list-title {

@@ -68,7 +68,7 @@ export default {
                     lng
                 })
             }
-            const results = fetch(`https://nightout.com/api/cities`, addConfig)
+            fetch(`https://nightout.com/api/cities`, addConfig)
             .then(results => JSON.parse(results))
             // .then(results => console.log(results))
             // .then(results => {

@@ -11,36 +11,46 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // routes: [
+  //   {path: '*',
+  //   component: NotFoundComponent
+  //   }
+  // ],
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/admin',
       name: 'index',
       component: Admin,
+      props: true,
       children: [{
         path: '/cities',
         name: 'search',
         component: Search,
+        props: true,
       },{
         path: '/cities/new-city',
         name: 'new-city',
-        component: NewCity
+        component: NewCity,
+        props: true,
       }]
     },
     {
-      path: '/:slug',
+      path: '/:slug/:id',
       name: 'city',
       component: Cities,
-    },
-    {
-      path: '/events/:id',
-      name: 'event',
-      component: Event,
-    },
-    {
-      path: '/collections/:id',
-      name: 'collection',
-      component: Collection,
+      props: true,
+      children: [{
+        path: '/events/:EventId',
+        name: 'event',
+        component: Event,
+        props: true,
+      },{
+        path: '/collections/:CollectionId',
+        name: 'collection',
+        component: Collection,
+        props: true,
+      }]
     }
   ]
   })

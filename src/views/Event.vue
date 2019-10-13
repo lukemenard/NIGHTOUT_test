@@ -2,6 +2,11 @@
 <template>
     <div class="wrapper">
         <div class="page">
+            <div class="search-close">
+                <router-link :to="{name: 'city', params: {slug: slug, id: cityId}}">
+                    X
+                </router-link>
+            </div>
             <div class="hero-event">
                 <div class="hero-background">
                     <img v-bind:src="imageURL" alt="">
@@ -40,13 +45,20 @@ export default {
     mounted(){
         this.$store.dispatch("showEvent", this.eventId)
     },
+    props: {
+        event: Object,
+        slug: String,
+        EventId: Number,
+        cityId: Number
+    },
     computed: {
-        event(){
-            return this.$route.params.event
-        },
-        eventId(){
-            return this.$route.params.event.id
-        },
+        // event(){
+        //     // return this.$route.params.event
+        //     return this.$store.state.selectedEvent
+        // },
+        // eventId(){
+        //     return this.$route.params.event.id
+        // },
         imageURL(){
             return this.event.image_src ? this.event.image_src : this.event.poster_url.small
         }, 
@@ -75,6 +87,7 @@ export default {
         width: 100%;
         position: absolute;
         top: 0;
+        z-index: 5000;
     }
 
     .page {
@@ -84,6 +97,19 @@ export default {
         width: 100%;
     }
 
+    .search-close {
+        font-family: Arial;
+        font-size: 20px;
+        line-height: 35px;
+        position: fixed;
+        top: 100px;
+        right: 10px;
+        display: block;
+        width: 35px;
+        color: #95979c;
+        z-index: 1000;
+    }
+
     .hero-event {
         background-color: #222;
         /* padding: 130px 20px 80px; */
@@ -91,7 +117,7 @@ export default {
         position: fixed;
         top: 60px;
         width: 100%;
-        height: 700px;
+        height: 800px;
     }
 
     .hero-background img{
@@ -151,12 +177,13 @@ export default {
         max-width: 66.6667%;
         box-sizing: border-box;
         position: relative;
-        justify-content: center;
+        justify-content: left;
     }
 
     .event-details {
         padding: 0;
-        margin-left: 30px;
+        margin-left: 50px;
+        margin-right: 50px;
     }
 
     .event-title {
