@@ -11,11 +11,6 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
-  // routes: [
-  //   {path: '*',
-  //   component: NotFoundComponent
-  //   }
-  // ],
   base: process.env.BASE_URL,
   routes: [
     {

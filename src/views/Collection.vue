@@ -45,9 +45,6 @@ export default {
         eventCollection(){
             return this.$store.getters.eventCollection(this.CollectionId)
         },
-        // CollectionId(){
-        //     return this.$route.params.id
-        // },
     }
 }   
 </script>
@@ -66,7 +63,6 @@ export default {
         position: absolute;
         top: 60px;
         z-index: 5000;
-        /* padding-left: 20px !important; */
     }
 
    .search-close {
@@ -112,7 +108,6 @@ export default {
         top: 50px;
         margin-top: 0;
         margin-bottom: 1rem;
-        /* margin-left: 120px !important; */
         display: inline-block;
         vertical-align: middle;
         max-width: 58%;
@@ -139,8 +134,6 @@ export default {
         flex-wrap: wrap;
         justify-content: space-evenly;
         height: 1000px;
-        /* padding-left: 7.5%;
-        padding-right: 7.5%; */
     }
 
 </style>

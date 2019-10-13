@@ -4,7 +4,6 @@
             <span v-for="eventCollection in eventCollections" :key="eventCollection.id">
                 <EventCollection :eventCollection="eventCollection" :CollectionId="eventCollections[0].id" :cityId="cityId" :slug="slug" />
             </span>
-            <!-- <router-view /> -->
         </div>
         <div class="event-list-title">
             Upcoming
@@ -13,7 +12,6 @@
             <span v-for="event in events" :key="event.id" class="listing-span">
                 <EventListing :event="event" :EventId="event.id" :slug="slug" :cityId="cityId"/>
             </span>
-            <!-- <router-view /> -->
         </div>
         <router-view/>
     </div>
@@ -32,9 +30,7 @@ export default {
         events: Array,
         eventCollections: Array,
         slug: String,
-        // CollectionId: Number,
         EventId: Number,
-        // cityId: Number
     },
     computed: {
         cityId(){

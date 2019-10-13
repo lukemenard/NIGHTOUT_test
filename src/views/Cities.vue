@@ -2,9 +2,7 @@
     <div class="city" >
         <div class="event-list">
             <h1>Events in {{city.name}}</h1>
-            <!-- router.push({ name: slug, params: { events, eventCollections }}) -->
                 <EventList :events="events" :eventCollections="eventCollections" :slug="city.slug" :cityID="cityId"/>
-            <!-- <router-view :key="$route.fullPath"/> -->
         </div>
     </div>
 </template>
@@ -17,9 +15,7 @@ export default {
         EventList
     },
     props: {
-        // id: String,
         slug: String,
-        // cityId: Number
     },
     mounted() {
         this.$store.dispatch("showCity", this.cityId)
@@ -31,7 +27,6 @@ export default {
             return this.$route.params.id
         },
         city() {
-            // return this.$store.getters.city(this.cityId)
             return this.$store.state.selectedCity
         },
         events() {

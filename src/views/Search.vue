@@ -41,7 +41,6 @@
         name: "Cities-Search",
         props: {
             city: Object,
-            // cityName: String
         },
         data() {
             return {

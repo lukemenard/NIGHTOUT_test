@@ -7,9 +7,9 @@
           <div class="patty"></div>
           <div class="patty"></div>
         </div>
-        <div class="logo">
-          <a href=""/>
-        </div>
+        <router-link v-bind:to="{name: 'index'}">
+          <div class="logo"></div>
+        </router-link>
         <div class="header-city-select">
           <a href="" class="header-select">
             <router-link v-bind:to="{name: 'search'}">
@@ -29,6 +29,9 @@
   </div>
 </template>
 
+<script>
+
+</script>
 
 <style lang="scss">
   body, html{

@@ -39,9 +39,6 @@ export default {
         imageURL(){
             return this.event.image_src ? this.event.image_src : this.event.poster_url.small
         },  
-        // event(){
-        //     return this.$store.getters.event(this.eventId)
-        // }
     },
     methods: {
         timestampToDate(){

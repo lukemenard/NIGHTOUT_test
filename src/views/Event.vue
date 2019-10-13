@@ -21,7 +21,9 @@
                         <div class="event-details-wrapper">
                             <div class="event-details">
                                 <div class="event-title">
+                                    <a :href="event.url">
                                     <h1>{{event.title}}</h1>
+                                    </a>
                                 </div>
                                 <div class="event-details">
                                     <div class="organization">
@@ -43,7 +45,7 @@
 <script>
 export default {
     mounted(){
-        this.$store.dispatch("showEvent", this.eventId)
+        // this.$store.dispatch("showEvent", this.eventId)
     },
     props: {
         event: Object,
@@ -52,13 +54,6 @@ export default {
         cityId: Number
     },
     computed: {
-        // event(){
-        //     // return this.$route.params.event
-        //     return this.$store.state.selectedEvent
-        // },
-        // eventId(){
-        //     return this.$route.params.event.id
-        // },
         imageURL(){
             return this.event.image_src ? this.event.image_src : this.event.poster_url.small
         }, 
@@ -71,8 +66,6 @@ export default {
     }
 }
 </script>
-
-
 
 <style scoped>
     .wrapper {
@@ -112,12 +105,12 @@ export default {
 
     .hero-event {
         background-color: #222;
-        /* padding: 130px 20px 80px; */
         display: block;
         position: fixed;
         top: 60px;
         width: 100%;
         height: 800px;
+        left: 0;
     }
 
     .hero-background img{
@@ -160,7 +153,6 @@ export default {
     }
 
     .event-poster img{
-        /* display: block; */
         width: 100%;
         height: auto;
         max-height: 300px;
