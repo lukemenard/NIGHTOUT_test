@@ -182,6 +182,10 @@ export default {
         font-size: .75rem;
     }
 
+    h1:hover {
+        background-color: #5477f5;
+    }
+
     .organization {
         font-size: 1.25rem;
         margin-left: -30px;
