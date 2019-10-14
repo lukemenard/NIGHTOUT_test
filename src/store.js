@@ -35,7 +35,8 @@ const getConfig = {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
-    "Authorization": "OAuth db8vk2r6tdvenlycs75cwkju4xx7y5v"
+    "Authorization": "OAuth db8vk2r6tdvenlycs75cwkju4xx7y5v",
+    "Cache-Control": "public, max-age=900"
   }
 }
 
